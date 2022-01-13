@@ -20,10 +20,10 @@ export class WeatherController{
             try {
                 const json = await this._weatherService.readWeather(location);
                 
+                json['view']='current';
                 
-                
-                console.log(json);
-                res.render('index');
+                // console.log(json);
+                res.render('index',json);
             } catch (error) {
                 res.status(404);
                 res.render('404',{url:req.originalUrl});

@@ -1,0 +1,12 @@
+
+<div>
+    <ol>
+    {{#each weather}}
+        <li>
+            <h2>{{date}}</h2>
+            {{> minmax}}
+            {{> hourly}}
+        </li>
+    {{/each}}
+    </ol>
+</div>
