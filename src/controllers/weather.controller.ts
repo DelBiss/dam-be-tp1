@@ -16,9 +16,21 @@ export class WeatherController{
         const router: Router = Router();
 
         router.use(async (req:Request, res: Response) => {
-            const json = await this._weatherService.readWeather(this._defaultLocation);
-            console.log(json);
-            res.render('index');
+            const location:string = req.url.slice(1) || this._defaultLocation;
+            try {
+                const json = await this._weatherService.readWeather(location);
+                
+                
+                
+                console.log(json);
+                res.render('index');
+            } catch (error) {
+                res.status(404);
+                res.render('404',{url:req.originalUrl});
+                
+                
+            }
+            
         });
         
         return router;
