@@ -15,6 +15,7 @@ export class Application {
     private readonly _internalError: number = 500;
     private readonly _viewsDir: string = path.join(__dirname, '..', 'templates', 'views');
     private readonly _partialsDir: string = path.join(__dirname, '..', 'templates', 'partials');
+    private readonly _staticDir: string = path.join(__dirname, '..', 'public');
     public app: express.Application;
 
     public constructor(@inject(TYPES.WeatherController) private _weatherController: WeatherController) {
@@ -36,7 +37,7 @@ export class Application {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(cors());
-
+        this.app.use(express.static(this._staticDir));
         //TODO Configurer les ressources statiques
     }
 
