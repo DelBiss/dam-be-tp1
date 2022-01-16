@@ -20,7 +20,8 @@ export class WeatherController{
             try {
                 const json = await this._weatherService.readWeather(location);
                 
-                json['view']='current';
+                // json['view']='current';
+                json['view']='days_hourly';
                 
                 // console.log(json);
                 res.render('index',json);

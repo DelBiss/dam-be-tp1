@@ -1,11 +1,11 @@
-<article>
+<article >
     <header>
         <h1>{{nearest_area.[0].areaName.[0].value}}, {{nearest_area.[0].region.[0].value}}, {{nearest_area.[0].country.[0].value}}</h1>
     </header>
     {{> (lookup . 'view') }}
     <div>
-        <div>Dernière observation</div>
-        <div>{{current_condition.[0].localObsDateTime}} (heure locale)</div>
+        <div class="d-inline fw-bold">Dernière observation</div>
+        <div class="d-inline">{{current_condition.[0].localObsDateTime}} (heure locale)</div>
     </div>
     
 </article>
