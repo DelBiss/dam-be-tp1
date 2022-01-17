@@ -1,0 +1,9 @@
+<div class="condition-extra-item">
+    <div class="condition-extra-icon" style="rotate:{{#if rotation}}{{rotation}}{{else}}0{{/if}}deg">
+        <img src="/img/icon/{{img}}.svg" alt="" srcset="">
+    </div>
+    <div class="condition-extra-detail">
+        <div class="condition-extra-detail-header">{{label}}</div>
+        <div class="condition-extra-detail-value">{{> @partial-block }}</div>
+    </div>
+</div>
