@@ -1,0 +1,194 @@
+{
+  "113": {
+    "day": "wsymbol_0001_sunny",
+    "night": "wsymbol_0008_clear_sky_night"
+  },
+  "116": {
+    "day": "wsymbol_0002_sunny_intervals",
+    "night": "wsymbol_0008_clear_sky_night"
+  },
+  "119": {
+    "day": "wsymbol_0003_white_cloud",
+    "night": "wsymbol_0004_black_low_cloud"
+  },
+  "122": {
+    "day": "wsymbol_0004_black_low_cloud",
+    "night": "wsymbol_0004_black_low_cloud"
+  },
+  "143": {
+    "day": "wsymbol_0006_mist",
+    "night": "wsymbol_0006_mist"
+  },
+  "176": {
+    "day": "wsymbol_0009_light_rain_showers",
+    "night": "wsymbol_0025_light_rain_showers_night"
+  },
+  "179": {
+    "day": "wsymbol_0013_sleet_showers",
+    "night": "wsymbol_0029_sleet_showers_night"
+  },
+  "182": {
+    "day": "wsymbol_0021_cloudy_with_sleet",
+    "night": "wsymbol_0037_cloudy_with_sleet_night"
+  },
+  "185": {
+    "day": "wsymbol_0021_cloudy_with_sleet",
+    "night": "wsymbol_0037_cloudy_with_sleet_night"
+  },
+  "200": {
+    "day": "wsymbol_0016_thundery_showers",
+    "night": "wsymbol_0032_thundery_showers_night"
+  },
+  "227": {
+    "day": "wsymbol_0019_cloudy_with_light_snow",
+    "night": "wsymbol_0035_cloudy_with_light_snow_night"
+  },
+  "230": {
+    "day": "wsymbol_0020_cloudy_with_heavy_snow",
+    "night": "wsymbol_0036_cloudy_with_heavy_snow_night"
+  },
+  "248": {
+    "day": "wsymbol_0007_fog",
+    "night": "wsymbol_0007_fog"
+  },
+  "260": {
+    "day": "wsymbol_0007_fog",
+    "night": "wsymbol_0007_fog"
+  },
+  "263": {
+    "day": "wsymbol_0009_light_rain_showers",
+    "night": "wsymbol_0025_light_rain_showers_night"
+  },
+  "266": {
+    "day": "wsymbol_0017_cloudy_with_light_rain",
+    "night": "wsymbol_0033_cloudy_with_light_rain_night"
+  },
+  "281": {
+    "day": "wsymbol_0021_cloudy_with_sleet",
+    "night": "wsymbol_0037_cloudy_with_sleet_night"
+  },
+  "284": {
+    "day": "wsymbol_0021_cloudy_with_sleet",
+    "night": "wsymbol_0037_cloudy_with_sleet_night"
+  },
+  "293": {
+    "day": "wsymbol_0017_cloudy_with_light_rain",
+    "night": "wsymbol_0033_cloudy_with_light_rain_night"
+  },
+  "296": {
+    "day": "wsymbol_0017_cloudy_with_light_rain",
+    "night": "wsymbol_0025_light_rain_showers_night"
+  },
+  "299": {
+    "day": "wsymbol_0010_heavy_rain_showers",
+    "night": "wsymbol_0026_heavy_rain_showers_night"
+  },
+  "302": {
+    "day": "wsymbol_0018_cloudy_with_heavy_rain",
+    "night": "wsymbol_0034_cloudy_with_heavy_rain_night"
+  },
+  "305": {
+    "day": "wsymbol_0010_heavy_rain_showers",
+    "night": "wsymbol_0026_heavy_rain_showers_night"
+  },
+  "308": {
+    "day": "wsymbol_0018_cloudy_with_heavy_rain",
+    "night": "wsymbol_0034_cloudy_with_heavy_rain_night"
+  },
+  "311": {
+    "day": "wsymbol_0021_cloudy_with_sleet",
+    "night": "wsymbol_0037_cloudy_with_sleet_night"
+  },
+  "314": {
+    "day": "wsymbol_0021_cloudy_with_sleet",
+    "night": "wsymbol_0037_cloudy_with_sleet_night"
+  },
+  "317": {
+    "day": "wsymbol_0021_cloudy_with_sleet",
+    "night": "wsymbol_0037_cloudy_with_sleet_night"
+  },
+  "320": {
+    "day": "wsymbol_0019_cloudy_with_light_snow",
+    "night": "wsymbol_0035_cloudy_with_light_snow_night"
+  },
+  "323": {
+    "day": "wsymbol_0011_light_snow_showers",
+    "night": "wsymbol_0027_light_snow_showers_night"
+  },
+  "326": {
+    "day": "wsymbol_0011_light_snow_showers",
+    "night": "wsymbol_0027_light_snow_showers_night"
+  },
+  "329": {
+    "day": "wsymbol_0020_cloudy_with_heavy_snow",
+    "night": "wsymbol_0036_cloudy_with_heavy_snow_night"
+  },
+  "332": {
+    "day": "wsymbol_0020_cloudy_with_heavy_snow",
+    "night": "wsymbol_0036_cloudy_with_heavy_snow_night"
+  },
+  "335": {
+    "day": "wsymbol_0012_heavy_snow_showers",
+    "night": "wsymbol_0028_heavy_snow_showers_night"
+  },
+  "338": {
+    "day": "wsymbol_0020_cloudy_with_heavy_snow",
+    "night": "wsymbol_0036_cloudy_with_heavy_snow_night"
+  },
+  "350": {
+    "day": "wsymbol_0021_cloudy_with_sleet",
+    "night": "wsymbol_0037_cloudy_with_sleet_night"
+  },
+  "353": {
+    "day": "wsymbol_0009_light_rain_showers",
+    "night": "wsymbol_0025_light_rain_showers_night"
+  },
+  "356": {
+    "day": "wsymbol_0010_heavy_rain_showers",
+    "night": "wsymbol_0026_heavy_rain_showers_night"
+  },
+  "359": {
+    "day": "wsymbol_0018_cloudy_with_heavy_rain",
+    "night": "wsymbol_0034_cloudy_with_heavy_rain_night"
+  },
+  "362": {
+    "day": "wsymbol_0013_sleet_showers",
+    "night": "wsymbol_0029_sleet_showers_night"
+  },
+  "365": {
+    "day": "wsymbol_0013_sleet_showers",
+    "night": "wsymbol_0029_sleet_showers_night"
+  },
+  "368": {
+    "day": "wsymbol_0011_light_snow_showers",
+    "night": "wsymbol_0027_light_snow_showers_night"
+  },
+  "371": {
+    "day": "wsymbol_0012_heavy_snow_showers",
+    "night": "wsymbol_0028_heavy_snow_showers_night"
+  },
+  "374": {
+    "day": "wsymbol_0013_sleet_showers",
+    "night": "wsymbol_0029_sleet_showers_night"
+  },
+  "377": {
+    "day": "wsymbol_0021_cloudy_with_sleet",
+    "night": "wsymbol_0037_cloudy_with_sleet_night"
+  },
+  "386": {
+    "day": "wsymbol_0016_thundery_showers",
+    "night": "wsymbol_0032_thundery_showers_night"
+  },
+  "389": {
+    "day": "wsymbol_0024_thunderstorms",
+    "night": "wsymbol_0040_thunderstorms_night"
+  },
+  "392": {
+    "day": "wsymbol_0016_thundery_showers",
+    "night": "wsymbol_0032_thundery_showers_night"
+  },
+  "395": {
+    "day": "wsymbol_0012_heavy_snow_showers",
+    "night": "wsymbol_0028_heavy_snow_showers_night"
+  }
+}
