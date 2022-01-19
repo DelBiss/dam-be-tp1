@@ -1,26 +1,17 @@
-{{!-- <div class="current-condition"> --}}
-    
-        <div class="temp-c">
-            {{#if temp_C}}{{temp_C}}{{else}}{{tempC}}{{/if}}℃
-        </div>
-        <div class="icon-box">
-            
-                <img class="icon" src="/img/condition/style1/{{weatherIconUrl.[0].value}}.png" alt="" srcset="">
-                {{!-- {{weatherIconUrl.[0].value}} --}}
-            
-        </div>
-        <div class="labeled-data feel">
-            <div >
-                T. ressentie:
-            </div>
-            <div >
-                {{FeelsLikeC}}℃    
-            </div>
-        </div>
-        <div class="weather-desc">
-                {{weatherDesc.[0].value}}
-        </div>       
-    
-    
-            
-{{!-- </div> --}}
+<div class="temp-c">
+    {{#if temp_C}}{{temp_C}}{{else}}{{tempC}}{{/if}}℃
+</div>
+<div class="icon-box">
+    <img class="icon" src="/img/condition/style1/{{weatherIconUrl.[0].value}}.png" alt="" srcset="">
+</div>
+<div class="labeled-data feel">
+    <div >
+        T. ressentie:
+    </div>
+    <div >
+        {{FeelsLikeC}}℃    
+    </div>
+</div>
+<div class="weather-desc">
+        {{weatherDesc.[0].value}}
+</div>

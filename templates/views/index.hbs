@@ -16,6 +16,8 @@
 </head>
 <body>
   
-  <div>{{>location}}</div>
+{{#> card}}
+    {{> _card_content contentType="_extra_condition" data=current_condition.[0] }}
+{{/ card}}
 </body>
 </html>

@@ -1,0 +1,19 @@
+<div class="card-content-row">
+    <div class="card-content-group">
+        {{#> _extra_condition_Item label="Précipitations" img="precip"}}
+            {{precipMM}} mm
+        {{/ _extra_condition_Item}}
+        {{#> _extra_condition_Item label="Vents" img="wind" rotation=winddirDegree}}
+            {{windspeedKmph}} Km/h {{winddir16Point}}
+        {{/ _extra_condition_Item}}
+    </div>
+    <div class="card-content-group">
+        {{#> _extra_condition_Item label="Humidité" img="humidity"}}
+            {{humidity}}%
+        {{/ _extra_condition_Item}}
+        {{#> _extra_condition_Item label="Index UV" img="uv"}}
+            {{uvIndex}}
+        {{/ _extra_condition_Item}}
+    </div>
+</div>
+    
