@@ -1,39 +1,40 @@
 @import url("card.css");
-@import url("current-condition.css");
-@import url("condition-extra.css");
+@import url("card-area-current.css");
+@import url("card-condition-extra.css");
 @import url("location.css");
-/* :root{
-    --card_text: white;
-} */
 
-
+:root{
+  --shadow: 2px 2px 0px rgba(0, 0, 0, 0.521);
+  --shadow-inset: inset 0px 1px 0px rgba(0, 0, 0, 0.13);
+}
 
   /* ================================================ */
     
-    .card-content-row {
-        flex-wrap: wrap;
-        width: 100%;
-        flex-shrink: 0;
-        flex:1;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        overflow: visible;
-    }
+.labeled-data {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
     
-    .card-content-group {
-        width: 100%;
-        flex-shrink: 0;
-        flex:1;
-        /* height: 34px; */
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        overflow: visible;
-        flex-wrap: inherit;
-      }
-    
+}
 
+.labeled-data > *:first-child{
+    font-weight: bolder;
+    flex-grow: 0;
+}
+    
+.top-b{
+  border-color: rgba(255, 255, 255, 0.25);
+  border-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  padding-top: 8px;
+  margin-top: 8px;
+  box-shadow: var(--shadow-inset);
+}
+
+.img-shadow {
+  filter: drop-shadow( var(--shadow));
+}
     /* ================================================ */
