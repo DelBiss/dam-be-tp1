@@ -1,0 +1,8 @@
+<article class="WeatherCard">
+    {{>card__area nearest_area.[0]}}
+    {{> card__current current_condition.[0]}}
+    
+        {{> @partial-block }}
+    
+    {{> card__obs current_condition.[0]}}
+</article>
