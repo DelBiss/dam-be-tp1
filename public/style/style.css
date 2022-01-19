@@ -1,5 +1,7 @@
 @import url("card.css");
+@import url("current-condition.css");
 @import url("condition-extra.css");
+@import url("location.css");
 /* :root{
     --card_text: white;
 } */
@@ -24,6 +26,11 @@
             border-left-width: 0px;
             border-right-width: 0px;
             flex:1;
+            margin-block: 1em;
+            grid-column-start: span 2;
+            grid-column-end: -1;
+            grid-row-start: span	2;
+            /* grid-row-end: -1; */
     }
     .card-content-row {
         flex-wrap: wrap;
@@ -63,7 +70,8 @@
         align-items: flex-end;
         padding: 0px 0px 4px 0px;
         overflow: visible;
-
+        grid-column: 1/3;
+        margin-inline: 1em;
         font-size: 0.875em;
     }
 

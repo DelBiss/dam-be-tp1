@@ -1,8 +1,7 @@
 <article class="wcard">
-    {{!-- <header>
-        <h1>{{nearest_area.[0].areaName.[0].value}}, {{nearest_area.[0].region.[0].value}}, {{nearest_area.[0].country.[0].value}}</h1>
-    </header> --}}
-    {{!-- {{> (lookup . 'view') }} --}}
+    
+    {{> _area }}
+    {{> _current current_condition.[0]}}
     {{> conditioncss current_condition.[0]}}
     <div class="obs">
         <div class="obs-label">Dernière observation</div>

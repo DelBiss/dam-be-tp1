@@ -1,0 +1,16 @@
+  .area{
+    grid-column: 1/3;
+    grid-row: 1;
+    z-index: 1;
+    width: 100%;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.521), 5px 4px 0px rgba(0,0,0,0.15);
+  }
+  .area > *{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+  }
+  .area-name {
+    font-size: 2.5em;
+  }

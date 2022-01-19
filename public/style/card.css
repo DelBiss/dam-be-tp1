@@ -8,18 +8,21 @@
 
 .wcard {
     box-sizing: border-box;
-    width: auto; /* 272px */
-    height: auto; /* 330px */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    min-width: 350px;
+    max-width: 550px;
+    /* height: auto;  */
+    display: grid;
+    /* flex-direction: column; */
+    /* justify-content: flex-start; */
     /* align-items: flex-start; Prevent condition-extra to expend*/  
     padding: 8px;
     box-shadow: 5px 3px 3px 4px rgba(0, 0, 0, 0.25);
     background: linear-gradient(170deg, #6379cf 0%, hsl(235, 79%, 18%) 100%);
     overflow: visible;
     border-radius: 20px;
-    gap: 16px;
+    /* gap: 16px; */
+    grid-template-columns:repeat(2,1fr);
+    justify-items: center;
   }
 
   /* .card{
@@ -38,3 +41,20 @@
     letter-spacing: 0px;
     line-height: 1.2;
 }
+
+.labeled-data {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    
+}
+
+.labeled-data > *:first-child{
+    font-weight: bolder;
+    flex-grow: 0;
+}
+/* 
+.labeled-data > *:last-child{
+    text-align: right;
+    flex-grow: 1;
+} */
