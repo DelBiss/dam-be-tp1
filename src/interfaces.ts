@@ -3,7 +3,13 @@ export interface WeatherProvider {
   readWeather(location: string): Promise<JSON>;
 }
 
+export interface WeatherDataTransformer{
+  transform(data:JSON):Promise<JSON>;
+}
 
+export interface WeatherCache{
+  cache(location: string, data:JSON):Promise<boolean>;
+}
 //Permet d'ajouter des champs à la requête de express
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
