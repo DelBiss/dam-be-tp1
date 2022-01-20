@@ -1,17 +1,17 @@
-<div class="day">
-    <div class="day-main">
-        <div class="day-date">
-            <div>{{Weekday date 'fr'}}</div>
-            <div>{{Daymonth date  'fr'}}</div>
+<div class="hour">
+    <div class="hour-main">
+            <div class="day-date">
+                {{Militarytime time 'fr'}}
+            </div>
+            <div class="temp-c">{{tempC}}℃</div>
+        
+        <div class="labeled-data">
+            <div>T. ressentie</div>
+            <div>{{FeelsLikeC}}℃</div>
         </div>
-        <div class="temp-c">{{avgtempC}}℃</div>
     </div>
-    <div class="labeled-data vert">
-        <div>Min</div>
-        <div>{{mintempC}}℃</div>
-    </div>
-    <div class="labeled-data vert">
-        <div>Max</div>
-        <div>{{maxtempC}}℃</div>
-    </div>
+    {{>card_weatherIcon weatherIconUrl}}
+    {{!-- <div class="weather-desc">
+        {{weatherDesc.[0].value}}
+    </div> --}}
 </div>

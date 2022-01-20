@@ -1,6 +1,6 @@
-<div class="card-content-row">
-    {{#each this}}
-        {{>card_hour__item this}}
+<div class="card-content-row hour-row">
+    {{#each this.[0].hourly}}
+        {{>card_hour__item }}
     {{/each}}
 </div>
     

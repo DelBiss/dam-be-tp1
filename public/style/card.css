@@ -10,8 +10,8 @@
 }
 
 .WeatherCard {
-    /* min-width: 350px;
-    max-width: 550px; */
+    /* min-width: 350px; */
+    max-width: 980px;
     
     box-sizing: border-box;
     
