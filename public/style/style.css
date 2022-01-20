@@ -17,6 +17,12 @@
     
 }
 
+.labeled-data.vert {
+  flex-direction: column;
+  gap: 0.3em;
+  align-items: center;
+}
+
 .labeled-data > *:first-child{
     font-weight: bolder;
     flex-grow: 0;

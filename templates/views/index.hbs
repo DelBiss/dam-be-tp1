@@ -16,8 +16,9 @@
 </head>
 <body>
   
-{{#> card_}}
+{{#> card__}}
     {{> card__content contentType="card_extra_condition__" data=current_condition.[0] }}
-{{/ card}}
+    {{> card__content contentType="card_daily__" data=weather }}
+{{/ card__}}
 </body>
 </html>

@@ -32,6 +32,26 @@ export class Application {
         this.app.set('view engine', 'hbs');
         this.app.set('views', this._viewsDir);
         hbs.registerPartials(this._partialsDir);
+
+        hbs.registerHelper('Militarytime',(strTime, _lang)=>{
+            const lang = _lang || 'en';
+            const dDate = new Date(0,0,0,strTime.substr(0,2),strTime.substr(2,2));
+            return new hbs.handlebars.SafeString(dDate.toLocaleString(lang,{hour: 'numeric'}));
+        });
+
+        hbs.registerHelper('Weekday',(strDate, _lang)=>{
+            const lang = _lang || 'en';
+            const dDate = new Date(strDate);
+            return new hbs.handlebars.SafeString(dDate.toLocaleString(lang, {weekday: 'short'}));
+            
+        });
+
+        hbs.registerHelper('Daymonth',(strDate, _lang)=>{
+            const lang = _lang || 'en';
+            const dDate = new Date(strDate);
+            return new hbs.handlebars.SafeString(dDate.toLocaleString(lang, {'day':'numeric',month: 'short'}));
+            
+        });
         // Configuration des middlewares pour toutes les requêtes
         this.app.use(logger('dev'));
         this.app.use(bodyParser.json());
