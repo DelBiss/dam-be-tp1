@@ -1,0 +1,27 @@
+
+<div class="card-content-row">
+    {{#each this.weather}}
+        {{#with astronomy.[0]}}
+            <div class="astronomy">
+                <div class="astronomy-main">
+                    <div class="astroDateHeader">{{Weekday ../date 'fr'}} {{Daymonth ../date  'fr'}}</div>
+                    <div class="RowHeader">Soleil</div>
+                    {{#> card_extra_condition__item label="Lever" img="sunrise"}}
+                    {{sunrise}}
+                    {{/ card_extra_condition__item}}
+                    {{#> card_extra_condition__item label="Coucher" img="sunset"}}
+                    {{sunset}}
+                    {{/ card_extra_condition__item}}
+                    <div class="RowHeader">Lune</div>
+                    {{#> card_extra_condition__item label="Lever" img="moonrise"}}
+                    {{moonrise}}
+                    {{/ card_extra_condition__item}}
+                    {{#> card_extra_condition__item label="Coucher" img="moonset"}}
+                    {{moonset}}
+                    {{/ card_extra_condition__item}}
+                </div>
+            </div>
+        {{/with}}
+    {{/each}}
+    
+</div>

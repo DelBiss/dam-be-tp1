@@ -9,12 +9,26 @@
 }
 
   /* ================================================ */
-    
+
+body {
+  background-image: url('/img/cloud.png');
+  background-color: #5b48b7f5;
+background-size: cover;
+background-blend-mode: color-dodge;
+}
+.hero{
+  display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 3em;
+  /* width:100% */
+}
 .labeled-data {
   display: flex;
   flex-direction: row;
   gap: 1em;
-    
+  
 }
 
 .labeled-data.vert {

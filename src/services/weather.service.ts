@@ -20,12 +20,17 @@ export class weatherService implements WeatherProvider{
         console.log('Looking for weather data in all provider: ', location);
 
 
-        const DatapromiseChain = this._weatherServices.reduce( (chain, dataProvider):Promise<JSON>=> {
-            return chain.catch((reason)=> {
-                console.log(reason);
-                return dataProvider.readWeather(location);
-            });
-        },Promise.reject());
+        const DatapromiseChain = this._weatherServices.reduce( 
+            (chain, dataProvider):Promise<JSON> => {
+                return chain.catch(
+                    (reason):Promise<JSON>  => {
+                        console.log(reason);
+                        return dataProvider.readWeather(location);
+                    }
+                );
+            },
+            Promise.reject()
+        );
 
 
         

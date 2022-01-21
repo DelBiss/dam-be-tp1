@@ -1,19 +1,20 @@
-<div class="card-content-row">
+{{#with this.current_condition.[0]}}
     <div class="card-content-row">
-        {{#> card_extra_condition__item label="Précipitations" img="precip"}}
-            {{precipMM}} mm
-        {{/ card_extra_condition__item}}
-        {{#> card_extra_condition__item label="Vents" img="wind" rotation=winddirDegree}}
-            {{windspeedKmph}} Km/h {{winddir16Point}}
-        {{/ card_extra_condition__item}}
+        <div class="card-content-row">
+            {{#> card_extra_condition__item label="Précipitations" img="precip"}}
+                {{precipMM}} mm
+            {{/ card_extra_condition__item}}
+            {{#> card_extra_condition__item label="Vents" img="wind" rotation=winddirDegree}}
+                {{windspeedKmph}} Km/h {{winddir16Point}}
+            {{/ card_extra_condition__item}}
+        </div>
+        <div class="card-content-row">
+            {{#> card_extra_condition__item label="Humidité" img="humidity"}}
+                {{humidity}}%
+            {{/ card_extra_condition__item}}
+            {{#> card_extra_condition__item label="Index UV" img="uv"}}
+                {{uvIndex}}
+            {{/ card_extra_condition__item}}
+        </div>
     </div>
-    <div class="card-content-row">
-        {{#> card_extra_condition__item label="Humidité" img="humidity"}}
-            {{humidity}}%
-        {{/ card_extra_condition__item}}
-        {{#> card_extra_condition__item label="Index UV" img="uv"}}
-            {{uvIndex}}
-        {{/ card_extra_condition__item}}
-    </div>
-</div>
-    
+{{/with}}        

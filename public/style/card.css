@@ -11,8 +11,8 @@
 
 .WeatherCard {
     /* min-width: 350px; */
-    max-width: 980px;
-    
+    max-width: 725px;
+    flex:1 0 0px;
     box-sizing: border-box;
     
     box-shadow: 5px 3px 3px 4px rgba(0, 0, 0, 0.25);
@@ -20,7 +20,7 @@
     border-radius: var(--border-radius);
 
     display: grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,auto);
     justify-items: center;
 
     font-weight: 400;
@@ -63,6 +63,8 @@
     width: 100%; 
     grid-column-start: 1;
     grid-column-end: -1;
+    display: flex;
+    justify-content: center;
 }
 
 .card-content-row {
@@ -72,5 +74,50 @@
     justify-content: space-around;
     align-items: center;
     flex:1;
-    gap: 2em;
+    column-gap: 2em;
+    row-gap: 0.2em;
+}
+
+.card_extra_condition__ {
+    min-width: 325px;
+    }
+.card_extra_condition__ > .card-content-row {
+    
+    flex: 1 1 300px;
+    max-width: 615px;
+}
+.card_extra_condition__ > .card-content-row > .card-content-row{
+    
+    flex: 1 1 135px;
+max-width: 300px;
+}
+
+.card_daily__ {
+    min-width: 400px;
+    box-sizing: border-box;
+    }
+.card_daily__ > .card-content-row {
+    max-width: 700px;
+    flex: 1 1 400px;
+    flex-wrap: nowrap;
+}
+
+.card_hour__graph {
+    min-width: 400px;
+    }
+
+.card_hour__graph > .hour-graph {
+    
+    flex: 1 1 400px;
+    max-width: 615px;
+}
+
+.card_astronomy {
+    min-width: 535px;
+    }
+
+.card_astronomy > .card-content-row {
+    
+    flex: 1 1 150px;
+    max-width: 700px;
 }

@@ -1,6 +1,8 @@
-<div class="card-content-row hour-row">
-    {{#each this.[0].hourly}}
-        {{>card_hour__item }}
-    {{/each}}
-</div>
+{{#with this.weather}}
+    <div class="card-content-row hour-row">
+        {{#each this.[0].hourly}}
+            {{>card_hour__item }}
+        {{/each}}
+    </div>
+{{/with}}
     

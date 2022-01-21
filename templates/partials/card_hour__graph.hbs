@@ -1,0 +1,118 @@
+{{#with this.weather}}
+
+  <div class="hour-graph">
+      {{!-- {{#each this.[0].hourly}}
+          {{>card_hour__item }}
+      {{/each}} --}}
+      <canvas id="myChart{{../iCity}}"></canvas>
+  <script>
+  const ctx{{../iCity}} = document.getElementById('myChart{{../iCity}}').getContext('2d');
+  const myChart{{../iCity}} = new Chart(ctx{{../iCity}}, {
+    type: 'line',
+    data: {
+      datasets: [
+        {
+          borderColor: 'rgba(255, 255, 0, 1)',
+          label: "Température",
+          fill: true,
+          backgroundColor: 'rgba(255, 255, 0, 0.25)',
+          data: [
+            {{#each this}} 
+            {{!-- {{#with this.[0]}} --}}
+                {{#each hourly}}
+                {x: new Date('{{Datestring ../date time}}'), y:{{tempC}} },
+              {{/each}}
+            {{!-- {{/with}} --}}
+            {{/each}}
+          ]
+        },
+        {
+          borderColor: 'rgba(255, 255, 200, 1)',
+          label: "Ressentie",
+          borderDash : [5, 15],
+          data: [
+            {{#each this}}
+            {{!-- {{#with this.[0]}} --}}
+                {{#each  hourly}}
+                {x: new Date('{{Datestring ../date time}}'), y:{{FeelsLikeC}} },
+              {{/each}}
+              {{!-- {{/with}} --}}
+            {{/each}}
+          ]
+        }
+      ]
+    },
+    options:{
+      responsive: true,
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'Température horaire des 3 prochain jours',
+          color: "#FFFFFF",
+          font: {
+            size: 22,
+            family: "'Noto Sans Display', sans-serif"
+          }
+        },
+        legend: {
+          position:'bottom',
+          labels: {
+            usePointStyle: true,
+          }
+        }
+      },
+      maintainAspectRatio: false,
+      scales:{
+        x: {
+          type: 'time',
+          time: {
+            // Luxon format string
+            tooltipFormat: 'DD T'
+          },
+          title: {
+            display: true,
+            text: 'Date'
+          },
+          ticks: {
+            autoSkip: true,
+            autoSkipPadding: 96,
+            color: "#FFFFFF",
+            major:{
+              enabled:true,
+              
+            }
+          }
+
+        },
+        y:{
+          beginAtZero: true,
+          ticks: {
+                // Include a dollar sign in the ticks
+                callback: function(value, index, ticks) {
+                    return value+'℃';
+                },
+                autoSkipPadding: 10,
+                color: "#FFFFFF",
+            major:{
+              enabled:false,
+              
+            }
+            },
+            
+        }
+      },
+      datasets:{
+        line:{
+          cubicInterpolationMode: 'monotone',
+        }
+      }
+    }
+
+  });
+  </script>
+  </div>
+{{/with}}

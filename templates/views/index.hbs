@@ -13,13 +13,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100;400;600&display=swap" rel="stylesheet"> 
   
   <title>Index.html</title>
+  {{!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script> --}}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@^3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@^2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@^1"></script>
 </head>
 <body>
-  
-{{#> card__}}
-    {{> card__content contentType="card_extra_condition__" data=current_condition.[0] }}
-    {{> card__content contentType="card_daily__" data=weather }}
-    {{> card__content contentType="card_hour__" data=weather }}
-{{/ card__}}
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <img class="bi me-2" src="/logo.png" width="40" height="32" role="img" aria-label="Bootstrap"></img>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/weather/{{query}}" class="nav-link px-2 text-secondary">Meteo Wiki</a></li>
+          <li><a href="/weather/now/{{query}}" class="nav-link px-2 text-white">Courant</a></li>
+          <li><a href="/weather/days/{{query}}" class="nav-link px-2 text-white">Prochain jours</a></li>
+          <li><a href="/weather/hours/{{query}}" class="nav-link px-2 text-white">Prochaine heures</a></li>
+          <fli><a href="/astronomy/{{query}}" class="nav-link px-2 text-white">Astronomy</a></li>
+        </ul>
+
+        <form action="" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" name="ville" class="form-control form-control-dark" placeholder="Recherche..." aria-label="Search">
+        </form>
+      </div>
+    </div>
+  </header>
+<div class="hero">
+  {{#each cities as |city iCity|}}
+    {{#> card__}}
+        {{#each ../view as |v|}}
+          
+          {{> card__content contentType=v data=city cityIndex=iCity}}
+          {{!-- {{../current_condition.[0].areaName.[0].value}} --}}
+        {{/each}}
+        {{!-- {{> card__content contentType="card_extra_condition__" data=current_condition.[0] }}
+        {{> card__content contentType="card_daily__" data=weather }}
+        {{> card__content contentType="card_hour__" data=weather }}
+        {{> card__content contentType="card_hour__graph" data=weather }} --}}
+    {{/ card__}}
+  {{/each}}
+</div>
 </body>
+
+
 </html>

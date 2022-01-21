@@ -1,3 +1,4 @@
-<div class="card-content top-b">
-    {{> (lookup . 'contentType') data}}
+
+<div class="card-content top-b {{contentType}}">
+    {{> (lookup . 'contentType') data iCity = cityIndex}}
 </div>

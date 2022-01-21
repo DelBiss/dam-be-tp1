@@ -23,8 +23,8 @@ container.bind(TYPES.WeatherService).to(weatherService);
 
 container.bind(TYPES.WeatherDataService).to(StaticWeatherService).whenTargetNamed('dev'); 
 container.bind(TYPES.WeatherDataService).to(MongodbService); 
-container.bind(TYPES.WeatherDataService).to(StaticWeatherService); 
 container.bind(TYPES.WeatherDataService).to(wttrWeatherService); 
+container.bind(TYPES.WeatherDataService).to(StaticWeatherService); 
 
 container.bind(TYPES.WeatherDataTransformPreCache).to(IconWeatherTransformer);
 
