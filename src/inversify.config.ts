@@ -26,6 +26,7 @@ container.bind(TYPES.WeatherDataService).to(MongodbService);
 container.bind(TYPES.WeatherDataService).to(wttrWeatherService); 
 container.bind(TYPES.WeatherDataService).to(StaticWeatherService); 
 
+container.bind(TYPES.WeatherCacheService).to(MongodbService); 
 container.bind(TYPES.WeatherDataTransformPreCache).to(IconWeatherTransformer);
 
 //Controllers

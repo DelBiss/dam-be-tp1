@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-import { WeatherDataTransformer, WeatherProvider } from '../interfaces';
-import { injectable, multiInject } from 'inversify';
+import { WeatherDataTransformer, WeatherProvider, WeatherCache } from '../interfaces';
+import { injectable, multiInject, inject } from 'inversify';
 import { TYPES } from '../types';
 
 
@@ -11,7 +11,8 @@ import { TYPES } from '../types';
 export class weatherService implements WeatherProvider{
     constructor(
         @multiInject(TYPES.WeatherDataService) private _weatherServices: WeatherProvider[],
-        @multiInject(TYPES.WeatherDataTransformPreCache) private _precacheTransform: WeatherDataTransformer[]
+        @multiInject(TYPES.WeatherDataTransformPreCache) private _precacheTransform: WeatherDataTransformer[],
+        @inject(TYPES.WeatherCacheService) private _cache: WeatherCache
         // @inject(TYPES.WeatherDataService) private _weatherService: WeatherProvider
     ){
         console.log('CTOR', this);
@@ -39,7 +40,14 @@ export class weatherService implements WeatherProvider{
                 return precache.transform(data);
             });
         },DatapromiseChain.then((value)=>{console.log('Sending data to transformation pre-cache');return value;}));
-        return PreCacheChain;
+        
+        //Send the caching into the air
+        PreCacheChain.then(
+            (value) =>{
+                return this._cache.cache(location,value)
+            }
+        );
+        return  PreCacheChain;
 
     }
 

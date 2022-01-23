@@ -10,6 +10,7 @@ export interface WeatherDataTransformer{
 export interface WeatherCache{
   cache(location: string, data:JSON):Promise<boolean>;
 }
+
 //Permet d'ajouter des champs à la requête de express
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
