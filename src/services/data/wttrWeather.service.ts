@@ -10,7 +10,6 @@ import fetch from 'node-fetch';
 */
 export class wttrWeatherService implements WeatherProvider{
     constructor(){
-        console.log('CTOR', this);//empty
     }
     async readWeather(location: string): Promise<JSON> {
         
@@ -24,11 +23,17 @@ export class wttrWeatherService implements WeatherProvider{
         
         console.log('Loading weather data from wttr: ', apiURL.href);
         
-        const response = fetch(apiURL);
-        return response.then(
+        const response = fetch(apiURL).then(
             (response) => {
                 return response.json();
-            });
+            }).then(
+                (json)=>{
+                    json["_id"] = location;
+                    json["cached_date"] = new Date();
+                    return json;
+                }
+            );
+        return response;
     }
 
 }

@@ -7,6 +7,11 @@
             "label": "Start Mongo",
             "type": "shell",
             "command": "cd dev_container;service docker start;docker-compose up"
+        },
+        {
+            "label": "Stop Mongo",
+            "type": "shell",
+            "command": "cd dev_container;docker-compose down;service docker stop;"
         }
     ]
 }

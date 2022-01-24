@@ -43,20 +43,11 @@ export class WeatherController {
         */
         const router: Router = Router();
 
-        router.get('/:view?/:ville?',async (req: Request, res: Response) => {
+        router.get('/:view?',async (req: Request, res: Response) => {
             const view = this._routing_template[req.params.view];
-            //Si query
-
-            //Sinon paramettre
+            console.log(req.originalUrl)
+            const locations: string[] = req.query['ville']?req.query['ville'].toString().split(/(?:,|;)/): [this._defaultLocation];
             
-            //Si ce n'est pas une vue valide, c'est une ville
-            const t = ((req.query['ville']?req.query['ville'].toString():(view?(req.params.ville||this._defaultLocation):req.params.view) || this._defaultLocation));
-            //Sinon default
-            // const t =req.query['ville']?req.query['ville'].toString().split(';'): [view?'': ...req.params.view.split(';'),...(req.params.ville || '').split(';')].filter((value)=>{
-            //     return !!value;
-            // });
-            const locations: string[] = t.split(';'); //length > 0 ? t : [this._defaultLocation]; //(((view?'':req.params.view+';')+(req.params.ville || '') )|| this._defaultLocation).split(';');
-            console.log(t,'REQUEST', locations);
             try {
 
                 type TemplateData = {
@@ -78,7 +69,7 @@ export class WeatherController {
                         json.cities.push(await this._weatherService.readWeather(location));    
                     }
                 }
-                json.query = queries.join(';');
+                json.query = "?ville="+queries.join(';');
                 res.render('index', json);
 
             } catch (error) {

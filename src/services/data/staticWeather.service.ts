@@ -8,7 +8,6 @@ import * as path from 'path';
 export class StaticWeatherService implements WeatherProvider{
     constructor(private _weathersDir: string = path.join('private', 'weathers'))
     {
-        console.log('CTOR', this);
     }
 
     /*

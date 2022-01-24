@@ -8,7 +8,7 @@ export interface WeatherDataTransformer{
 }
 
 export interface WeatherCache{
-  cache(location: string, data:JSON):Promise<boolean>;
+  cache(data:JSON):Promise<boolean>;
 }
 
 //Permet d'ajouter des champs à la requête de express

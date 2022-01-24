@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { WeatherProvider, WeatherCache } from '../../interfaces';
-import { Collection, MongoClient, InsertOneResult } from 'mongodb';
+import { Collection, MongoClient, UpdateResult } from 'mongodb';
 
 const mongourl = 'mongodb://root:example@localhost:27017/?authSource=admin&readPreference=primary&ssl=false';
 const db_name = 'tp1';
@@ -13,7 +13,6 @@ const collection_name = 'weathers';
 export class MongodbService implements WeatherProvider, WeatherCache{
     constructor(private _mongoClient:MongoClient = new MongoClient(mongourl), private _collection: Collection<any>){
         this._collection = this._mongoClient.db(db_name).collection<any>(collection_name);
-        console.log('CTOR', this);
     }
     
     
@@ -24,14 +23,19 @@ export class MongodbService implements WeatherProvider, WeatherCache{
         const DataReadPromise = this._mongoClient.connect().then(
             //Search for the location
             ()=>{
-                return this._collection.findOne({'location':location})
+                return this._collection.findOne({'_id':location})
             }
         ).then(
             (entry:JSON)=>{
                 if(entry===null){
                     throw new Error('Not found');
                 }
-                return entry["data"];
+                
+                if((new Date().getTime() - entry["cached_date"].getTime())/1000> parseInt(process.env.CACHED_SECOND||'900')){
+                    throw new Error(`Cached for ${entry['_id']} has expired`);
+                    
+                }
+                return entry;
             }
         ).finally(
             ()=>{
@@ -42,24 +46,25 @@ export class MongodbService implements WeatherProvider, WeatherCache{
         return DataReadPromise;
     }
 
-    async cache(_location: string, _data: JSON): Promise<boolean> {
-        const entry = {
-            location: _location,
-            data: _data
-        };
+    async cache(data: JSON): Promise<boolean> {
+        
 
         console.log('Sending to cache')
         const InsertPromise = 
         //Connect to Mongo
         this._mongoClient.connect().then(
             //Send my entry
-            ():Promise<InsertOneResult>=>{
-                return this._collection.insertOne(entry)
+            ():Promise<UpdateResult>=>{
+                    
+                return this._collection.updateOne(
+                    {'_id':data['_id']},
+                    { $set: data },
+                    { upsert: true })
             }
         ).then(
             //SUCCES
-            (result:InsertOneResult)=>{
-                console.log(`Data for ${_location} cached complete with result: ${result.acknowledged} and ID: ${result.insertedId}`)
+            (result:UpdateResult)=>{
+                console.log(`Data for ${data['_id']} cached complete with result: ${result.acknowledged} and ID: ${result.upsertedId}`)
                 return result.acknowledged;
             }
         ).catch(

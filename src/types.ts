@@ -6,7 +6,8 @@ const TYPES = {
     WeatherDataTransformPreCache: Symbol.for('WeatherDataTranformPreCache'),
     WeatherDataTransform: Symbol.for('WeatherDataTranform'),
     WeatherService: Symbol.for('WeatherRepository'),
-    WeatherController: Symbol.for('WeatherController')
+    WeatherController: Symbol.for('WeatherController'),
+    AstronomyController: Symbol.for('AstronomyController')
 };
 
 export { TYPES };

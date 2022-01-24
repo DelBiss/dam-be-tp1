@@ -15,7 +15,6 @@ export class weatherService implements WeatherProvider{
         @inject(TYPES.WeatherCacheService) private _cache: WeatherCache
         // @inject(TYPES.WeatherDataService) private _weatherService: WeatherProvider
     ){
-        console.log('CTOR', this);
     }
     async readWeather(location: string): Promise<JSON> {
         console.log('Looking for weather data in all provider: ', location);
@@ -44,7 +43,7 @@ export class weatherService implements WeatherProvider{
         //Send the caching into the air
         PreCacheChain.then(
             (value) =>{
-                return this._cache.cache(location,value)
+                return this._cache.cache(value)
             }
         );
         return  PreCacheChain;

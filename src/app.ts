@@ -9,6 +9,7 @@ import * as hbs from 'hbs';
 import { inject, injectable } from 'inversify';
 import { TYPES } from './types';
 import { WeatherController } from './controllers/weather.controller';
+import { AstronomyController } from './controllers/astronomy.controller';
 
 @injectable()
 export class Application {
@@ -19,7 +20,10 @@ export class Application {
     private readonly _staticDir: string = path.join(__dirname, '..', 'public');
     public app: express.Application;
 
-    public constructor(@inject(TYPES.WeatherController) private _weatherController: WeatherController) {
+    public constructor(
+        @inject(TYPES.WeatherController) private _weatherController: WeatherController,
+        @inject(TYPES.AstronomyController) private _astronomyController: AstronomyController
+    ) {
 
         this.app = express();
 
@@ -54,7 +58,7 @@ export class Application {
         hbs.registerHelper('Weekday',(strDate, _lang)=>{
             const lang = _lang || 'en';
             const dDate = new Date(strDate);
-            return new hbs.handlebars.SafeString(dDate.toLocaleString(lang, {weekday: 'short'}));
+            return new hbs.handlebars.SafeString(dDate.toLocaleString(lang, {timeZone: 'UTC',weekday: 'short'}));
             
         });
 
@@ -62,7 +66,7 @@ export class Application {
         hbs.registerHelper('Daymonth',(strDate, _lang)=>{
             const lang = _lang || 'en';
             const dDate = new Date(strDate);
-            return new hbs.handlebars.SafeString(dDate.toLocaleString(lang, {'day':'numeric',month: 'short'}));
+            return new hbs.handlebars.SafeString(dDate.toLocaleString(lang, {timeZone: 'UTC','day':'numeric',month: 'short'}));
             
         });
         // Configuration des middlewares pour toutes les requêtes
@@ -83,11 +87,9 @@ export class Application {
         // Le weather controller se charge des routes /weather/*
         this.app.use('/weather', this._weatherController.router);
 
-        //TODO Ajouter un controller pour les routes /astronomy/*
-        this.app.get('/astronomy/:ville?', (req, res) => {
-            console.log('icici',req.url);
-            res.redirect(`/weather/astronomy/${req.params.ville}` );
-        });
+        //Routes /astronomy/*
+        this.app.use('/astronomy',this._astronomyController.router);
+
         // En dernier lieu, on fait la gestion d'erreur 
         // si aucune route n'est trouvé
         this.errorHandeling();

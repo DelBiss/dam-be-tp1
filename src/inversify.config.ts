@@ -1,6 +1,7 @@
 import { Container } from 'inversify';
 import { TYPES } from './types';
 import { WeatherController } from './controllers/weather.controller';
+import { AstronomyController } from './controllers/astronomy.controller';
 import { Application } from './app';
 import { Server } from './server';
 //TODO Utiliser wttr comme provider au lieu des fichiers statiques
@@ -31,6 +32,7 @@ container.bind(TYPES.WeatherDataTransformPreCache).to(IconWeatherTransformer);
 
 //Controllers
 container.bind(TYPES.WeatherController).to(WeatherController);
+container.bind(TYPES.AstronomyController).to(AstronomyController);
 
 
 export { container };
