@@ -2,10 +2,10 @@ import { injectable } from 'inversify';
 import { WeatherProvider, WeatherCache } from '../../interfaces';
 import { Collection, MongoClient, UpdateResult } from 'mongodb';
 
-const mongourl = 'mongodb://root:example@localhost:27017/?authSource=admin&readPreference=primary&ssl=false';
-const db_name = 'tp1';
+const mongourl = process.env.MONGO_CONNECTION_STRING || 'mongodb://root:example@localhost:27017/';
+const db_name = process.env.DB_NAME || 'tp1';
 const collection_name = 'weathers';
-
+ 
 @injectable()
 /*
 * Cette classe s'occupe des communications avec MongoDB
