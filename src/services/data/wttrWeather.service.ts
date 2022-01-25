@@ -2,7 +2,8 @@
 import { WeatherProvider } from '../../interfaces';
 import { injectable } from 'inversify';
 import fetch from 'node-fetch';
-
+import {getCF} from '../../console_formating'
+const consoleWttr = getCF('wttr')
 
 @injectable()
 /*
@@ -21,7 +22,7 @@ export class wttrWeatherService implements WeatherProvider{
         
         apiURL.search = params.toString();
         
-        console.log('Loading weather data from wttr: ', apiURL.href);
+        consoleWttr(`Loading weather data from wttr: ${apiURL.href}`);
         
         const response = fetch(apiURL).then(
             (response) => {

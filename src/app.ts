@@ -11,6 +11,10 @@ import { TYPES } from './types';
 import { WeatherController } from './controllers/weather.controller';
 import { AstronomyController } from './controllers/astronomy.controller';
 
+
+
+import {getCF} from './console_formating'
+const consoleServer = getCF('Server')
 @injectable()
 export class Application {
 
@@ -83,6 +87,23 @@ export class Application {
         this.app.get('/', (req, res) => {
             res.redirect('/weather');
         });
+
+        this.app.use((req,res,next)=>{
+           
+            const blockWidth = 100;
+            consoleServer(''.padEnd(blockWidth,'-'),'none')
+            consoleServer(''.padEnd(blockWidth),'none')
+            consoleServer('Nouvelle Requete', 'connection');         
+            consoleServer(''.padEnd(blockWidth),'none')
+            consoleServer(''.padEnd(blockWidth,'-'),'none')
+            consoleServer(''.padEnd(blockWidth),'none')
+            consoleServer(`http://${req.hostname}:${this.app.get('port')}${req.originalUrl}`.padEnd(blockWidth),'none');         
+            consoleServer(''.padEnd(blockWidth),'none')
+            consoleServer(''.padEnd(blockWidth,'-'),'none')
+            console.log()
+            next()
+        })
+        
         
         // Le weather controller se charge des routes /weather/*
         this.app.use('/weather', this._weatherController.router);

@@ -4,8 +4,8 @@ import { AddressInfo } from 'net';
 import { Application } from './app';
 import { TYPES } from './types';
 
-
-
+import {getCF, sunset} from './console_formating'
+const consoleServer = getCF('Server')
 @injectable()
 export class Server {
 
@@ -56,6 +56,12 @@ export class Server {
     private  onListening(): void {
         const addr: string | AddressInfo | null   = this.server.address();
         const bind: string = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr?.port}`;
-        console.log(`Listening on ${bind}`);
+        console.log()
+        consoleServer('Bienvenue sur le serveur de');
+        consoleServer('MeteoWiki','title');
+        sunset()
+        consoleServer(`Listening on ${bind}`,'special');
+        console.log()
+        
     }
 }

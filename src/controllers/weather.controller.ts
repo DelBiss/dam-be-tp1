@@ -45,7 +45,7 @@ export class WeatherController {
 
         router.get('/:view?',async (req: Request, res: Response) => {
             const view = this._routing_template[req.params.view];
-            console.log(req.originalUrl)
+            
             const locations: string[] = req.query['ville']?req.query['ville'].toString().split(/(?:,|;)/): [this._defaultLocation];
             
             try {
@@ -62,15 +62,20 @@ export class WeatherController {
                     query   : ''
                 };
 
-                const queries = [];
-                for (const location of locations) {
-                    if(location){
-                        queries.push(location); //C'est pas beau, mais il est 3h du matin
-                        json.cities.push(await this._weatherService.readWeather(location));    
+                
+                const allQuery = locations.filter(x=>x).map(
+                    (location)=>{
+                        return this._weatherService.readWeather(location);    
+                        
+                })
+                json.query = "?ville="+locations.join(';');
+                Promise.all(allQuery).then(
+                    (allRequest)=>{
+                        json.cities = allRequest
+                        res.render('index', json);
                     }
-                }
-                json.query = "?ville="+queries.join(';');
-                res.render('index', json);
+                )
+                
 
             } catch (error) {
                 res.status(404);

@@ -2,7 +2,9 @@
 import { WeatherDataTransformer, WeatherProvider, WeatherCache } from '../interfaces';
 import { injectable, multiInject, inject } from 'inversify';
 import { TYPES } from '../types';
-
+import { NotFoundInCache, CacheExpired } from '../error'
+import {getCF} from '../console_formating'
+const consoleCache = getCF('Cache')
 
 @injectable()
 /*
@@ -17,14 +19,18 @@ export class weatherService implements WeatherProvider{
     ){
     }
     async readWeather(location: string): Promise<JSON> {
-        console.log('Looking for weather data in all provider: ', location);
+        
 
 
         const DatapromiseChain = this._weatherServices.reduce( 
             (chain, dataProvider):Promise<JSON> => {
                 return chain.catch(
                     (reason):Promise<JSON>  => {
-                        console.log(reason);
+                        if(reason instanceof  CacheExpired){
+                            consoleCache(reason.message)
+                        }else if(reason instanceof NotFoundInCache){
+                            consoleCache(reason.message)
+                        }
                         return dataProvider.readWeather(location);
                     }
                 );
@@ -38,7 +44,7 @@ export class weatherService implements WeatherProvider{
             return chain.then((data)=>{
                 return precache.transform(data);
             });
-        },DatapromiseChain.then((value)=>{console.log('Sending data to transformation pre-cache');return value;}));
+        },DatapromiseChain);
         
         //Send the caching into the air
         PreCacheChain.then(
